@@ -1,17 +1,22 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 
 import Heading from "../heading";
 import Navbar from "../navbar";
-import BlogGrid from "../blogGrid";
 import Footer from "../footer";
+import blogService from "../../services/blogService";
 import SubHeading from "../subheading";
 import CategoryList from "../categorylist";
-import categoryNav from "../categoryNav";
-const data = require("../../dummy-data.json");
-const blogs = data.blogPosts.reverse();
-const categories = data.categories;
-
 export default function CategoriesPage() {
+  const [categories, setCategories] = useState();
+  useEffect (() =>{
+    blogService.getCategories().then((categories) => { 
+      setCategories(categories);
+    }).catch((error) => {
+      console.error('Error fetching blog posts:', error);
+      throw error;
+    });
+  
+  },[]);
   return (
     <>
       <Navbar />

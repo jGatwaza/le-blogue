@@ -21,6 +21,18 @@ const router = createBrowserRouter([
     element: <BlogPosts />,
   },
 ]);
+const getBlogs = (onsuccess, onerror) =>{
+  fetch("", {
+    method: "GET",
+    headers:{
+      "content-type" : "application/json"
+    },
+  }).then((data)=>{
+    console.log("Sucess")
+  }).error((error)=>{
+    console.log("error")
+  })
+}
 function App() {
   return <RouterProvider router={router} />;
 }

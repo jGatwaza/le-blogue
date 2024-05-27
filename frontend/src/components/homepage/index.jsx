@@ -1,4 +1,4 @@
-import React, {useState} from "react"; //I deconsrtucted react and extracted the useState hook
+import React, {useState, useEffect} from "react"; //I deconsrtucted react and extracted the useState hook
 
 import Heading from "../heading";
 import Navbar from "../navbar";
@@ -6,15 +6,30 @@ import BlogGrid from "../blogGrid";
 import Footer from "../footer";
 import SubHeading from "../subheading";
 import CategoryList from "../categorylist";
-
-const data = require("../../dummy-data.json");
-const blogsDummydata = data.blogPosts;
-const categories = data.categories;
+import blogService from "../../services/blogService";
 
 export default function HomePage() {
 
-  const [blogs, setblogs] = useState(blogsDummydata);
-  const [categoryID, setCategoryID] = useState();
+  const [blogs, setblogs] = useState();
+  const [categories, setCategories] = useState();
+  useEffect (() =>{
+    blogService.getBlogs().then((blogs) => { 
+      setblogs(blogs);
+    }).catch((error) => {
+      console.error('Error fetching blog posts:', error);
+      throw error;
+    });
+  
+  },[]);
+  useEffect (() =>{
+    blogService.getCategories().then((categories) => { 
+      setCategories(categories);
+    }).catch((error) => {
+      console.error('Error fetching blog posts:', error);
+      throw error;
+    });
+  
+  },[]);
   return (
     <>
       <Navbar />

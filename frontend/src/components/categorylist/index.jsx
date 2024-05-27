@@ -5,10 +5,10 @@ import "./index.css";
 export default function CategoryList({ categories }) {
   return (
     <div className="category-list">
-      {categories.map((category) => {
+      {categories?.map((category, index) => {
         return (
           <button
-            key={category.id}
+            key={index}
             className="card"
             style={{ borderRadius: "0px", border: "none" }}
             onClick={() => {

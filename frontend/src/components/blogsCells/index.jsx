@@ -9,7 +9,7 @@ export default function BlogCells({ blogPosts }) {
   return (
     <div className="container mt-3">
       <div className="row">
-        {blogPosts.slice(0,3).map((blogPost, index) => (
+        {blogPosts?.map((blogPost, index) => (
           <div key={index} className="col-md-4 mb-4">
             <BlogItem
               imageOrientation={"top"}

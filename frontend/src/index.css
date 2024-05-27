@@ -5,8 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #EBEBD3 !important;
 }
-
+.umweru{
+  background-color: #EBEBD3;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -25,4 +28,9 @@ code {
   font-weight: bold;
   text-align: left;
 }
-
+.navbarNav{
+  overflow: scroll !important;
+}
+.page-subtitle{
+  margin-left: 1vw !important;
+}
