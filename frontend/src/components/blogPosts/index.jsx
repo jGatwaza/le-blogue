@@ -12,12 +12,13 @@ export default function BlogsPage() {
   const [blogs, setBlogs] = useState([]); 
   const [categories, setCategories] = useState([]);
   const [categoryId, setCategoryId] = useState(categoryIdParam);
-
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     blogService.getBlogs().then((blogs) => {
       setAllBlogs(blogs);
       setBlogs(blogs); 
+      setLoading(false);
     }).catch((error) => {
       console.error('Error fetching blog posts:', error);
       throw error;
@@ -44,7 +45,15 @@ export default function BlogsPage() {
       setBlogs(allBlogs); 
     }
   }, [categoryId, allBlogs]);
-
+  if (loading) {
+    return <div className="position-absolute top-50 start-50 translate-middle">
+      <div class="spinner-border spinner-border-xlg" role="status">
+        
+    <span class="visually-hidden">Loading...</span>
+    
+  </div>
+  </div>;
+  }
   return (
     <>
       <Navbar />

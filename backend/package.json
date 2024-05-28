@@ -1,0 +1,20 @@
+{
+  "name": "le-blogue",
+  "version": "1.0.0",
+  "description": "This is the backend server for le Blogue",
+  "main": "./src/index.js",
+  "scripts": {
+    "dev": "nodemon .",
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jean Yves Gatwaza",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.1"
+  }
+}
