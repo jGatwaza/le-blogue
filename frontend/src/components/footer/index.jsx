@@ -21,7 +21,7 @@ export default function Footer() {
             </Link>
           </li>
         </ul>
-        <p className="text-center text-muted">&copy; 2024 Le Blog, Inc</p>
+        <p className="text-center text-muted">&copy; 2024 Le Blogue, Inc</p>
       </footer>
     </div>
   );

@@ -7,16 +7,17 @@ router.get("/", (req, res) => {
     blogController.getBlogs(req, res);
 });
 router.get("/categories/:id", (req, res) => {
-    blogController.getBlogByCategoryId(req, res);
+    blogController.getBlog(req, res);
 });
 router.put("/categories/:id", (req, res) => {
-    blogController.updateBlogById(req, res);
+    blogController.updateBlog(req, res);
 });
 router.post("/", (req, res) => {
-    blogController.createBlogs(req, res);
+    blogController.createBlog(req, res);
+    console.log(req.body);
 });
 router.delete("/:id", (req, res) => {
-    blogController.deleteBlogById(req, res);
+    blogController.deleteBlog(req, res);
 });
 router.get("/:id", (req, res) => {
     blogController.getBlogById(req, res);
