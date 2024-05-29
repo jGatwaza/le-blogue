@@ -1,9 +1,10 @@
 import React from "react";
 
 export default function Categories({ blogPost }) {
+const posts = {blogPost}
   return (
     <div className="flex-wrap">
-      {blogPost.categories.map((category, index) => {
+      {posts.categories?.map((category, index) => {
         return (
           <p
             key={index}

@@ -140,7 +140,7 @@ export default function AddEditBlogModal({ addBlog, editBlog , categories, creat
                 </select>
               </div>
               <div className="mb-3">
-                {/* <Categories
+                <Categories
                   categories={blog?.categories}
                   removeCategory={(category) => {
                     setBlog({
@@ -150,7 +150,7 @@ export default function AddEditBlogModal({ addBlog, editBlog , categories, creat
                       ),
                     });
                   }}
-                /> */}
+                />
               </div>
 
               <div className="mb-3">
