@@ -5,7 +5,9 @@ import Navbar from "../navbar";
 import BlogsCells from "../blogsCells";
 import Footer from "../footer";
 import blogService from "../../services/blogService";
-
+import AddEditBlogModal from "../AddEditBlogModal";
+import bootstrap from 'bootstrap';
+import Loading from "../Loading";
 export default function BlogsPage() {
   const { categoryId: categoryIdParam } = useParams();
   const [allBlogs, setAllBlogs] = useState([]); 
@@ -46,13 +48,7 @@ export default function BlogsPage() {
     }
   }, [categoryId, allBlogs]);
   if (loading) {
-    return <div className="position-absolute top-50 start-50 translate-middle">
-      <div class="spinner-border spinner-border-xlg" role="status">
-        
-    <span class="visually-hidden">Loading...</span>
-    
-  </div>
-  </div>;
+    return <><Loading /></>;
   }
   return (
     <>
@@ -78,7 +74,9 @@ export default function BlogsPage() {
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <p className="page-subtitle">Blog Posts</p>
         </div>
+        <button className="btn btn-secondary m-3"> Add Blog</button>
         <BlogsCells blogPosts={blogs} />
+        <AddEditBlogModal />
       </div>
       <Footer />
     </>

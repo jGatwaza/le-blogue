@@ -6,6 +6,7 @@ import Footer from "../footer";
 import blogService from "../../services/blogService";
 import SubHeading from "../subheading";
 import CategoryList from "../categorylist";
+import Loading from "../Loading";
 export default function CategoriesPage() {
   const [categories, setCategories] = useState();
   const [loading, setLoading] = useState(true);
@@ -20,16 +21,9 @@ export default function CategoriesPage() {
   
   },[]);
   if (loading) {
-    return <div className="position-absolute top-50 start-50 translate-middle">
-      <div class="spinner-border spinner-border-xlg" role="status">
-        
-    <span class="visually-hidden">Loading...</span>
-    
-  </div>
-  </div>;
+    return <><Loading/></>;
   }
   return (
-    
     <>
       <Navbar />
       <div className="container">

@@ -7,7 +7,7 @@ import Footer from "../footer";
 import SubHeading from "../subheading";
 import CategoryList from "../categorylist";
 import blogService from "../../services/blogService";
-
+import Loading from "../Loading";
 export default function HomePage() {
 
   const [blogs, setblogs] = useState();
@@ -34,13 +34,7 @@ export default function HomePage() {
   
   },[]);
   if (loading) {
-    return <div className="position-absolute top-50 start-50 translate-middle">
-      <div class="spinner-border spinner-border-xlg" role="status">
-        
-    <span class="visually-hidden">Loading...</span>
-    
-  </div>
-  </div>;
+    return <><Loading/></>;
   }
   return (
     <>
