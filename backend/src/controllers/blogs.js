@@ -56,7 +56,7 @@ const updateBlog = async (req, res) => {
       const blog = await Blog.findById(req.params.id);
       if (blog) {
         blog.authorId = req.body.authorId || blog.authorId;
-        blog.categoryId = req.body.categoryId || blog.categoryId;
+        blog.categoryIds = req.body.categoryIds || blog.categoryIds;
         blog.title = req.body.title || blog.title;
         blog.description = req.body.description || blog.description;
         blog.image = req.body.image || blog.image;

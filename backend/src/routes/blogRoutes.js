@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 router.get("/categories/:id", (req, res) => {
     blogController.getBlog(req, res);
 });
-router.put("/categories/:id", (req, res) => {
+router.put("/:id", (req, res) => {
     blogController.updateBlog(req, res);
 });
 router.post("/", (req, res) => {
@@ -20,7 +20,7 @@ router.delete("/:id", (req, res) => {
     blogController.deleteBlog(req, res);
 });
 router.get("/:id", (req, res) => {
-    blogController.getBlogById(req, res);
+    blogController.getBlog(req, res);
 });
 
 
