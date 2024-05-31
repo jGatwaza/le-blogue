@@ -14,7 +14,7 @@ export default function HomePage() {
   const [categories, setCategories] = useState();
   const [loading, setLoading] = useState(true);
   useEffect (() =>{
-    blogService.getBlogs().then((blogs) => { 
+    blogService.fetchBlogs().then((blogs) => { 
       setblogs(blogs);
       setLoading(false);
       ;

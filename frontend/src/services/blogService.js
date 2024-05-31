@@ -141,42 +141,6 @@ const updateBlog = async (blog) => {
     const responseData = await response.json();
     return responseData;
   };
-  
-async function deleteBlog(id) {
-    try {
-        const response = await fetch('https://ix-blog-app-2d5c689132cd.herokuapp.com/api/blogs', 
-            {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',      
-            },
-            body: id
-        }
-        );
-        const blogsApidata = await response.json();
-        return blogsApidata.data;
-    } catch (error) {
-        console.error('Error Deleting blog posts:', error);
-        throw error;
-    }
-};
-async function getCategories() {
-    try {
-        const response = await fetch('https://ix-blog-app-2d5c689132cd.herokuapp.com/api/categories', 
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',      
-            }
-        }
-        );
-        const blogsApidata = await response.json();
-        return blogsApidata.data;
-    } catch (error) {
-        console.error('Error fetching Categories:', error);
-        throw error;
-    }
-};
 
 const blogService = {
     createBlog,
