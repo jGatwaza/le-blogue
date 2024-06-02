@@ -34,7 +34,7 @@ export default function HomePage() {
   
   },[]);
   if (loading) {
-    return <><Loading/></>;
+    return <Loading/>;
   }
   return (
     <>
