@@ -10,16 +10,16 @@ import Loading from "../Loading";
 export default function CategoriesPage() {
   const [categories, setCategories] = useState();
   const [loading, setLoading] = useState(true);
-  useEffect (() =>{
-    blogService.getCategories().then((categories) => { 
-      setCategories(categories);
-      setLoading(false);
-    }).catch((error) => {
-      console.error('Error fetching blog posts:', error);
-      throw error;
-    });
+  // useEffect (() =>{
+  //   blogService.getCategories().then((categories) => { 
+  //     setCategories(categories);
+  //     setLoading(false);
+  //   }).catch((error) => {
+  //     console.error('Error fetching blog posts:', error);
+  //     throw error;
+  //   });
   
-  },[]);
+  // },[]);
   if (loading) {
     return <><Loading/></>;
   }

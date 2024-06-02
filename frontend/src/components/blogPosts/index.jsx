@@ -28,14 +28,14 @@ export default function BlogsPage() {
   }, []);
 
   
-  useEffect(() => {
-    blogService.getCategories().then((categories) => {
-      setCategories(categories);
-    }).catch((error) => {
-      console.error('Error fetching categories:', error);
-      throw error;
-    });
-  }, []);
+  // useEffect(() => {
+  //   blogService.getCategories().then((categories) => {
+  //     setCategories(categories);
+  //   }).catch((error) => {
+  //     console.error('Error fetching categories:', error);
+  //     throw error;
+  //   });
+  // }, []);
 
   useEffect(() => {
     if (categoryId) {

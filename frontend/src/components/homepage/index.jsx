@@ -12,27 +12,27 @@ export default function HomePage() {
 
   const [blogs, setblogs] = useState();
   const [categories, setCategories] = useState();
-  const [loading, setLoading] = useState(true);
-  useEffect (() =>{
-    blogService.fetchBlogs().then((blogs) => { 
-      setblogs(blogs);
-      setLoading(false);
-      ;
-    }).catch((error) => {
-      console.error('Error fetching blog posts:', error);
-      throw error;
-    });
+  const [loading, setLoading] = useState(false);
+  // useEffect (() =>{
+  //   blogService.fetchBlogs().then((blogs) => { 
+  //     setblogs(blogs);
+  //     setLoading(false);
+  //     ;
+  //   }).catch((error) => {
+  //     console.error('Error fetching blog posts:', error);
+  //     throw error;
+  //   });
   
-  },[]);
-  useEffect (() =>{
-    blogService.getCategories().then((categories) => { 
-      setCategories(categories);
-    }).catch((error) => {
-      console.error('Error fetching blog posts:', error);
-      throw error;
-    });
+  // },[]);
+  // useEffect (() =>{
+  //   blogService.getCategories().then((categories) => { 
+  //     setCategories(categories);
+  //   }).catch((error) => {
+  //     console.error('Error fetching blog posts:', error);
+  //     throw error;
+  //   });
   
-  },[]);
+  // },[]);
   if (loading) {
     return <Loading/>;
   }
