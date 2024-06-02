@@ -17,7 +17,6 @@ import "./index.css";
 export default function BlogPage() {
   const navigate = useNavigate();
   const { blogId } = useParams();
-
   const [blog, setBlog] = useState(null);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
