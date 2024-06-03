@@ -17,7 +17,7 @@ export default function BlogsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    blogService.getBlogs().then((blogs) => {
+    blogService.fetchBlogs().then((blogs) => {
       setAllBlogs(blogs);
       setBlogs(blogs); 
       setLoading(false);

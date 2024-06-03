@@ -2,40 +2,42 @@ const mongoose = require("mongoose");
 
 const blogSchema = new mongoose.Schema(
   {
-    authorId: {
-      type: String,
+    author: {
+      type: Map,
+      of: mongoose.Schema.Types.Mixed,
       required: true,
     },
     categoryIds: {
-      type: Array,
-      required: false,
+      type: [mongoose.Schema.Types.ObjectId],
+      required: true,
       ref: "Category",
     },
     title: {
       type: String,
-      required: false,
+      required: true,
     },
     description: {
       type: String,
-      required: false,
+      required: true,
     },
     image: {
       type: String,
-      required: false,
+      default: "https://storage.googleapis.com/ix-blog-app/default.jpeg",
     },
     content: {
       type: Array,
-      required: false,
+      required: true,
     },
   },
-  { timeStamp: false }
+  { timestamps: true }
 );
+
 // Add a toJSON method to the schema to control the output of blog instances
 blogSchema.method("toJSON", function () {
   const { __v, _id, categoryIds, ...object } = this.toObject();
   object.id = _id;
 
-  object.categories = categoryIds.map((category) => {
+  object.categories = categoryIds?.map((category) => {
     return {
       id: category._id,
       title: category.title,

@@ -13,15 +13,15 @@ export default function HomePage() {
   const [blogs, setblogs] = useState();
   const [categories, setCategories] = useState();
   const [loading, setLoading] = useState(false);
-  // useEffect (() =>{
-  //   blogService.fetchBlogs().then((blogs) => { 
-  //     setblogs(blogs);
-  //     setLoading(false);
-  //     ;
-  //   }).catch((error) => {
-  //     console.error('Error fetching blog posts:', error);
-  //     throw error;
-  //   });
+  useEffect (() =>{
+    blogService.fetchBlogs().then((blogs) => { 
+      setblogs(blogs);
+      setLoading(false);
+      ;
+    }).catch((error) => {
+      console.error('Error fetching blog posts:', error);
+      throw error;
+    });
   
   // },[]);
   // useEffect (() =>{
@@ -32,7 +32,7 @@ export default function HomePage() {
   //     throw error;
   //   });
   
-  // },[]);
+  },[]);
   if (loading) {
     return <Loading/>;
   }

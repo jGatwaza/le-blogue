@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Modal } from "bootstrap";
-import PropTypes from "prop-types";
 
 export default function AddEditCategoryModal({
   addCategory,
@@ -155,11 +154,3 @@ export default function AddEditCategoryModal({
     </div>
   );
 }
-
-AddEditCategoryModal.propTypes = {
-  addCategory: PropTypes.object,
-  editCategory: PropTypes.object,
-  createCategory: PropTypes.func.isRequired,
-  updateCategory: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
