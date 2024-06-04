@@ -2,7 +2,7 @@ import React from "react";
 
 import "./index.css";
 
-import BlogItem from "../blogItem";
+import BlogItem from "../BlogItem";
 
 export default function BlogGrid({ blogPosts }) {
   if (!blogPosts || !blogPosts.length) {

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { Modal } from "bootstrap";
 import Loading from "../Loading";
 // Components:
-import Categories from "../categories";
+import Categories from "../Categories";
 // import SuccessToast from "../../components/SuccessToast";
 // import ErrorToast from "../../components/ErrorToast";
 // import Loading from "../../components/Loading";

@@ -1,11 +1,22 @@
-import HomePage from "./components/homepage";
-import CategoriesPage from "./components/categoriesPage";
-import BlogPosts from './components/blogPosts';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import "bootstrap-icons/font/bootstrap-icons.css";
+
+import "./App.css";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-const router = createBrowserRouter([
+
+import HomePage from "./pages/HomePage";
+import BlogsPage from "./pages/BlogsPage";
+import BlogPage from "./pages/BlogPage";
+import CategoriesPage from "./pages/CategoriesPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+
+const routes = [
   {
-    path: "/",
+    path: "",
     element: <HomePage />,
   },
   {
@@ -13,105 +24,30 @@ const router = createBrowserRouter([
     element: <HomePage />,
   },
   {
-    path: "/Categories",
+    path: "/blogs/:categoryId?",
+    element: <BlogsPage />,
+  },
+  {
+    path: "/blog/:blogId",
+    element: <BlogPage />,
+  },
+  {
+    path: "/categories",
     element: <CategoriesPage />,
   },
   {
-    path: "/BlogPosts",
-    element: <BlogPosts />,
+    path: "/login",
+    element: <LoginPage />,
   },
-]);
-const getBlogs = (onsuccess, onerror) =>{
-  fetch("", {
-    method: "GET",
-    headers:{
-      "content-type" : "application/json"
-    },
-  }).then((data)=>{
-    console.log("Sucess")
-  }).error((error)=>{
-    console.log("error")
-  })
-}
+  {
+    path: "/register",
+    element: <RegisterPage />,
+  },
+];
+const router = createBrowserRouter(routes);
+
 function App() {
   return <RouterProvider router={router} />;
 }
-// Lock in, innit? 
+
 export default App;
-
-// const HomePage = () => {
-//   return (
-//     <div>
-//       <h1 className="m-5">My Blog App</h1>
-//       <p style={{ fontSize: "18px" }}>
-//         Welcome to my blog! I'm excited to share my thoughts with the world.
-//       </p>
-//       <div
-//         style={{ width: "100%", display: "flex", justifyContent: "center" }}
-//         className="m-5 p-5"
-//       >
-//         <div className="card m-5" style={{ width: "18rem" }}>
-//           <img src={logo} className="card-img-top" alt="..." />
-//           <div className="card-body">
-//             <h5 className="card-title">Card title</h5>
-//             <p className="card-text">
-//               Some quick example text to build on the card title and make up the
-//               bulk of the card's content.
-//             </p>
-//             <a href="./" className="btn btn-primary">
-//               Read
-//             </a>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// function App() {
-
-//   const user = {
-//     firstname: "Jean Yves",
-//     lastname: "Gatwaza",
-//     bio: "bio",
-//     email:"jgatwazakubwimana@college.harvard.edu",
-//     image: "https://www.techfinitive.com/wp-content/uploads/2023/06/Untitled-jpeg.webp",
-//     authenticate: true,
-//   };
-//   const blogs = [
-//     {id: 1,
-//       title:"Nancy Drew",
-//       author: user
-//     },
-//     { 
-//       id: 2,
-//       title:"Frankenstein Victor",
-//       author: user
-//     }
-//   ]
-//   return ( user.authenticate ?
-//     <>
-//       <h1>Welcome {user["firstname"]}</h1>
-//       <img src={user.image} alt="ifoto, wann"></img>
-//       <div>
-//         {
-//           blogs.map((blog)=> {
-//             return(
-//               <>
-//               <h1>{blog.title}</h1>
-//               </>
-//             )
-//           })
-//         }
-//       </div>
-//     </> :  
-//     <>
-//       <h1>Login, brav!</h1>
-//     </>
-
-// return (
-//   <div className="App">
-//     <HomePage />
-//   </div>
-// );
-// };

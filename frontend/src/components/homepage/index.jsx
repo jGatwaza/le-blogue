@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react"; //I deconsrtucted react and extracted the useState hook
 
 import Heading from "../heading";
-import Navbar from "../navbar";
-import BlogGrid from "../blogGrid";
+import Navbar from "../Navbar";
+import BlogGrid from "../BlogGrid";
 import Footer from "../footer";
-import SubHeading from "../subheading";
+import SubHeading from "../Subheading";
 import CategoryList from "../categorylist";
 import blogService from "../../services/blogService";
 import Loading from "../Loading";

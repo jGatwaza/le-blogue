@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-import Navbar from "../navbar";
-import Heading from "../heading";
+import Navbar from "../Navbar";
+import Heading from "../Heading";
 import CategoryList from "../CategoriesList";
-import Footer from "../footer";
+import Footer from "../Footer";
 import Loading from "../Loading";
 
 import categoryService from "../../services/categoryService";
-import SuccessToast from "../../components/SuccessToast";
-import ErrorToast from "../../components/ErrorToast";
-import AddEditCategoryModal from "../../components/AddEditCategoryModal";
-import DeleteCategoryModal from "../../components/DeleteCategoryModal";
+import SuccessToast from "../SuccessToast";
+import ErrorToast from "../ErrorToast";
+import AddEditCategoryModal from "../AddEditCategoryModal";
+import DeleteCategoryModal from "../DeleteCategoryModal";
 
 export default function CategoriesPage() {
   const [categories, setCategories] = useState([]);

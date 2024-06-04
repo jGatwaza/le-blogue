@@ -1,6 +1,6 @@
 import React from "react";
 
-import BlogItemText from "../blogItemText";
+import BlogItemText from "../BlogItemText";
 import EditButtons from "../EditButtons";
 
 import "../../App.css";

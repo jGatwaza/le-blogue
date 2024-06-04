@@ -1,11 +1,11 @@
 import React,{useEffect, useState} from "react";
 
-import Heading from "../heading";
-import Navbar from "../navbar";
-import Footer from "../footer";
+import Heading from "../Heading";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 import blogService from "../../services/blogService";
-import SubHeading from "../subheading";
-import CategoryList from "../categorylist";
+import SubHeading from "../Subheading";
+import CategoryList from "../Categorylist";
 import Loading from "../Loading";
 export default function CategoriesPage() {
   const [categories, setCategories] = useState();

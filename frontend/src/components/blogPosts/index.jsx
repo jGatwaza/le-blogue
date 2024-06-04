@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Heading from "../heading";
-import Navbar from "../navbar";
-import BlogsCells from "../blogsCells";
-import Footer from "../footer";
+import Heading from "../Heading";
+import Navbar from "../Navbar";
+import BlogsCells from "../BlogsCells";
+import Footer from "../Footer";
 import blogService from "../../services/blogService";
 import AddEditBlogModal from "../AddEditBlogModal";
 import bootstrap from 'bootstrap';

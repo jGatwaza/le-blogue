@@ -1,6 +1,6 @@
 import React from "react";
 
-import Categories from "../categories";
+import Categories from "../Categories";
 import "./index.css";
 
 export default function BlogItemText({ blogPost, headerFontSize }) {
