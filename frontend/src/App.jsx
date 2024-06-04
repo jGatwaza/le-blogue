@@ -36,7 +36,7 @@ const getBlogs = (onsuccess, onerror) =>{
 function App() {
   return <RouterProvider router={router} />;
 }
-
+// Lock in, innit? 
 export default App;
 
 // const HomePage = () => {
