@@ -7,12 +7,12 @@ import "./App.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import HomePage from "./pages/HomePage";
-import BlogsPage from "./pages/BlogsPage";
-import BlogPage from "./pages/BlogPage";
-import CategoriesPage from "./pages/CategoriesPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/Home";
+import BlogsPage from "./pages/Blogs";
+import BlogPage from "./pages/Blog";
+import CategoriesPage from "./pages/Categories";
+import LoginPage from "./pages/Login";
+import RegisterPage from "./pages/Register";
 
 const routes = [
   {

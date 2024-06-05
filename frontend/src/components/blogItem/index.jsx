@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import BlogItemText from "../BlogItemText";
 import EditButtons from "../EditButtons";
 
@@ -13,6 +15,13 @@ export default function BlogItem({
   onBlogEdit,
   onBlogDelete,
 }) {
+  const navigate = useNavigate();
+  const navigateToBlog = () => {
+    if (!onBlogEdit && !onBlogDelete) {
+      navigate(`/blog/${blog.id}`);
+    }
+  };
+
   const EditButtonsContainer = () => {
     return (
       <EditButtons
@@ -21,31 +30,22 @@ export default function BlogItem({
       />
     );
   };
-
   if (imageOrientation === "top") {
     return (
-      <div
-        key={index}
-        className="card-1"
-        onClick={() => console.log("TODO: nav to blog")}
-      >
+      <div key={index} className="card-1" onClick={navigateToBlog}>
         <img src={blog.image} className="card-img-top" alt="..." />
         <div className="card-text-bottom">
-          <BlogItemText blog={blog} headerFontSize="20px" />
+          <BlogItemText blogPost={blog} headerFontSize="20px" />
           {onBlogEdit && onBlogDelete ? <EditButtonsContainer /> : null}
         </div>
       </div>
     );
   } else {
     return (
-      <div
-        key={index}
-        className="card-2"
-        onClick={() => console.log("TODO: nav to blog")}
-      >
+      <div key={index} className="card-2" onClick={navigateToBlog}>
         <img src={blog.image} className="card-img-left" alt="..." />
-        <div style={{ position: "relative" }} className="card-text-right">
-          <BlogItemText blog={blog} headerFontSize="20px" />
+        <div className="card-text-right">
+          <BlogItemText blogPost={blog} headerFontSize="20px" />
           {onBlogEdit && onBlogDelete ? <EditButtonsContainer /> : null}
         </div>
       </div>

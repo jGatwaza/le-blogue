@@ -1,5 +1,5 @@
 const createBlog = async (blog) => {
-  const response = await fetch("http://localhost:3005/api/blogs", {
+  const response = await fetch("http://localhost:8000/api/blogs", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -24,7 +24,7 @@ const createBlog = async (blog) => {
 };
 
 const fetchBlogs = async () => {
-  const response = await fetch("http://localhost:3005/api/blogs", {
+  const response = await fetch("http://localhost:8000/api/blogs", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -47,7 +47,7 @@ const fetchBlogs = async () => {
 };
 
 const fetchBlogByID = async (id) => {
-  const response = await fetch("http://localhost:3005/api/blogs/" + id, {
+  const response = await fetch("http://localhost:8000/api/blogs/" + id, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -70,7 +70,7 @@ const fetchBlogByID = async (id) => {
 
 const fetchBlogsByCategoryId = async (categoryId) => {
   const response = await fetch(
-    "http://localhost:3005/api/blogs/categories/" + categoryId,
+    "http://localhost:8000/api/blogs/categories/" + categoryId,
     {
       method: "GET",
       headers: {
@@ -95,7 +95,7 @@ const fetchBlogsByCategoryId = async (categoryId) => {
 
 const fetchBlogsByAuthorId = async (authorId) => {
   const response = await fetch(
-    "http://localhost:3005/api/blogs/author/" + authorId,
+    "http://localhost:8000/api/blogs/author/" + authorId,
     {
       method: "GET",
       headers: {
@@ -119,7 +119,7 @@ const fetchBlogsByAuthorId = async (authorId) => {
 };
 
 const updateBlog = async (blog) => {
-  const response = await fetch("http://localhost:3005/api/blogs/" + blog.id, {
+  const response = await fetch("http://localhost:8000/api/blogs/" + blog.id, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -143,7 +143,7 @@ const updateBlog = async (blog) => {
 };
 
 const deleteBlog = async (id) => {
-  const response = await fetch("http://localhost:3005/api/blogs/" + id, {
+  const response = await fetch("http://localhost:8000/api/blogs/" + id, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

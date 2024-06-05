@@ -1,28 +1,26 @@
-const express = require('express');
-const cors = require('cors');
-
-const app = express();
-const port = process.env.PORT || 3005;
-
-// CORS options
-const corsOptions = {
-  origin: 'http://localhost:3000', // This should match the URL of your client
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeaders: ["Content-Type", "Authorization"]
-};
-
-// Enable preflight requests for all routes
-app.options('*', cors(corsOptions)); // Enable CORS preflight path for all routes
-
-// Apply CORS to all routes
-app.use(cors(corsOptions));
-const connectDB = require("./database/db");
+const express = require("express");
+const cors = require("cors");
 require("dotenv").config();
+
+const blogsRoutes = require("./routes/blogs");
+const categoryRoutes = require("./routes/categories");
+const authRoutes = require("./routes/auth");
+
+const connectDB = require("./database/db");
+
 connectDB();
-app.use(express.json());
+
+const port = process.env.PORT || 8000;
+const app = express();
+
 app.use(cors());
-app.use("/api/blogs", require("./routes/blogRoutes"));
+
+app.use(express.json());
+
+app.use("/api/blogs", blogsRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/auth", authRoutes);
 
 app.listen(port, () => {
-  console.log(`IX blogging app listening on port ${port}`);
+  console.log(`Example app listening on port ${port}`);
 });

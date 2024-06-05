@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 
 const blogSchema = new mongoose.Schema(
   {
-    author: {
-      type: Map,
-      of: mongoose.Schema.Types.Mixed,
-      required: true,
+    authorId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: false,
+      ref: "User",
     },
     categoryIds: {
       type: [mongoose.Schema.Types.ObjectId],
@@ -34,22 +34,33 @@ const blogSchema = new mongoose.Schema(
 
 // Add a toJSON method to the schema to control the output of blog instances
 blogSchema.method("toJSON", function () {
-  const { __v, _id, categoryIds, ...object } = this.toObject();
+  const {
+    __v,
+    _id,
+    categoryIds,
+    authorId,
+    ...object
+  } = this.toObject({ virtuals: true });
+
   object.id = _id;
 
-  object.categories = categoryIds?.map((category) => {
-    return {
-      id: category._id,
-      title: category.title,
-      description: category.description,
-      color: category.color,
-    };
-  });
+  // Safe handling of categoryIds assuming it's populated
+  object.categories = categoryIds && Array.isArray(categoryIds) ? categoryIds.map(category => ({
+    id: category._id,
+    title: category.title,
+    description: category.description,
+    color: category.color,
+  })) : [];
 
-  // Ensure author is included in the returned object
-  if (this.author) {
-    object.author = this.author;
-  }
+  // Safe handling of authorId assuming it's populated
+  object.author = authorId ? {
+    id: authorId._id,
+    firstName: authorId.firstName,
+    lastName: authorId.lastName,
+    email: authorId.email,
+    image: authorId.image,
+    bio: authorId.bio,
+  } : {};
 
   return object;
 });

@@ -22,21 +22,27 @@ export default function AddEditBlogModal({
     return modalEl ? new Modal(modalEl) : null;
   }, [modalEl]);
 
-useEffect(() => {
-  if (addBlog) {
-    setBlog(addBlog);
-    if (addEditModal) {
+  useEffect(() => {
+    if (addBlog) {
+      setBlog(addBlog);
       addEditModal.show();
-    }
-  } else if (editBlog) {
-    setBlog(editBlog);
-    if (addEditModal) {
+    } else if (editBlog) {
+      setBlog(editBlog);
       addEditModal.show();
+    } else {
+      // Ensure resetting the blog properly includes resetting categories
+      setBlog({
+        title: "",
+        description: "",
+        categories: [],  // Ensure this is correctly set up for a new blog
+        content: [],
+        authorId: ""
+      });
     }
-  }
-}, [addBlog, editBlog, addEditModal]);
+  }, [addBlog, editBlog, addEditModal]);
+  
   const onSubmit = (e) => {
-    e?.preventDefault();
+    e.preventDefault();
     if (isFormValid()) {
       if (addBlog) {
         createBlog(blog);
@@ -47,7 +53,7 @@ useEffect(() => {
       addEditModal?.hide();
     }
   };
-
+  
   const resetBlog = () => {
     setBlog({
       title: "",
@@ -109,21 +115,20 @@ useEffect(() => {
                     className="form-select"
                     id="categoryInputSelect"
                     onChange={(e) => {
-                      const category = categories?.find(
-                        (x) => x.id === e.target.value
-                      );
+                      const category = categories?.find(x => x.id === e.target.value);
                       if (!category) {
                         return;
                       }
-                      if (blog?.categories?.find((x) => x.id === category.id)) {
-                        return;
+                      if (blog?.categories?.find(x => x.id === category.id)) {
+                        return; // Avoid adding the same category again
                       }
                       const blogUpdate = {
                         ...blog,
-                        categories: [...blog.categories, category],
+                        categories: [...blog.categories, category]
                       };
                       setBlog(blogUpdate);
                     }}
+                    
                     required={editBlog ? false : true}
                   >
                     {categories?.map((category, index) => {
