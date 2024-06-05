@@ -48,6 +48,7 @@ export default function BlogsPage() {
     };
 
     fetchData();
+    alert();
   }, [categoryId]);
 
   const onBlogAdd = () => {
@@ -113,6 +114,33 @@ export default function BlogsPage() {
     setEditBlog(null);
   };
 
+  const removeBlog = async (blog) => {
+
+    try {
+
+      const newBlog = await blogService.deleteBlog(blog.id);
+
+      setIsSuccess(true);
+
+      setMessage(newBlog.message);
+
+      setBlogs((prev) => {
+
+        return prev.filter((x) => x.id !== blog.id);
+
+      });
+
+    } catch (err) {
+
+      setIsError(true);
+
+      setMessage(err);
+
+    }
+
+    setDeleteBlog(null);
+
+  };
   const CategoriesList = ({ categoryId }) => {
     if (!categories && !categories?.length) {
       return null;
