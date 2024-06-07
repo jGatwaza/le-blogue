@@ -14,7 +14,7 @@ import DeleteBlogModal from "../../components/DeleteBlogModal";
 
 import "./index.css";
 
-// use Global state
+// use Global state, init? 
 import {
   setAddBlog,
   fetchBlogsByCategoryId,
