@@ -30,7 +30,7 @@ export default function AddEditBlogModal({
       setBlog(editBlog);
       addEditModal.show();
     } else {
-      // Ensure resetting the blog properly includes resetting categories
+      // Ensure resetting the blog properly includes resetting categories as intended
       setBlog({
         title: "",
         description: "",
