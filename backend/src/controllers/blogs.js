@@ -2,7 +2,7 @@ const Blog = require("../models/Blog");
 
 const createBlogs = async (req, res) => {
   try {
-    console.log(req.body);
+    console.log("BODY:", req.body);
     const categoryIds = JSON.parse(req?.body?.categories).map((x) => x.id);
     const blog = new Blog({
       title: req.body.title,
@@ -85,8 +85,29 @@ const getBlogsByCategoryID = async (req, res) => {
   }
 };
 
+const getBlogsByAuthorID = async (req, res) => {
+  try {
+    console.log(req.params.id);
+    let filter = {};
+    if (req.params.id != "null" && req.params.id != "undefined") {
+      filter = { authorId: req.params.id };
+    }
+    const blogs = await Blog.find(filter)
+      .populate({
+        path: "categoryIds",
+      })
+      .populate({ path: "authorId" });
+    res.status(200).json({
+      message: "Get blogs by authorID!",
+      data: blogs,
+    });
+  } catch (err) {
+    res.status(500).json({ message: error.message, data: {} });
+  }
+};
+
 const updateBlogByID = async (req, res) => {
-  console.log(req.body);
+  console.log("BODY:", req.body);
   try {
     const blog = await Blog.findById(req.params.id)
       .populate({
@@ -137,6 +158,7 @@ const blogController = {
   getBlogs,
   getBlogById,
   getBlogsByCategoryID,
+  getBlogsByAuthorID,
   updateBlogByID,
   deleteBlogByID,
 };

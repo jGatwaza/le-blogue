@@ -1,16 +1,27 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "bootstrap-icons/font/bootstrap-icons.css"; // Import Bootstrap Icons
 
 export default function Navbar() {
   const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.body.classList.toggle("dark-mode", !darkMode);
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav
+      className={`navbar navbar-expand-lg ${
+        darkMode ? "navbar-dark" : "navbar-light"
+      }`}
+    >
       <div style={{ margin: "0px 5%" }} className="container-fluid">
-        <a className="navbar-brand" href="#">
-          Le Blogue de Software engineering
-        </a>
+        <Link className="navbar-brand" to="/home">
+          Le Blogue SWEing Blog
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -57,9 +68,9 @@ export default function Navbar() {
                   <ul className="dropdown-menu">
                     <li>
                       <Link
-                        className=" dropdown-item"
+                        className="dropdown-item"
                         aria-current="page"
-                        to={"/profile/" + user.id}
+                        to={"/profile/" + user._id}
                       >
                         Profile
                       </Link>
@@ -81,6 +92,17 @@ export default function Navbar() {
               </li>
             ) : null}
           </ul>
+          <button
+            id="darkModeToggle"
+            className="btn btn-secondary ms-3"
+            onClick={toggleDarkMode}
+          >
+            {darkMode ? (
+              <i className="bi bi-sun"></i>
+            ) : (
+              <i className="bi bi-moon"></i>
+            )}
+          </button>
         </div>
       </div>
     </nav>

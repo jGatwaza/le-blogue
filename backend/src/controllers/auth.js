@@ -1,6 +1,5 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
 const User = require("../models/User");
 
 const generateToken = (user) => {
@@ -83,7 +82,62 @@ const login = async (req, res) => {
   }
 };
 
+const getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).select("-password");
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
+      return;
+    }
+    res.status(200).json({ message: "User foundi", data: user });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const updateUser = async (req, res) => {
+  try {
+    console.log("BODY:", req.body);
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
+      return;
+    }
+
+    // Parse JSON from form data
+    const formData = req.body;
+
+    user.firstName = formData.firstname || user.firstName;
+    user.lastName = formData.lastname || user.lastName;
+    user.email = formData.email || user.email;
+    user.bio = formData.bio || user.bio;
+
+    if (req.file) {
+      user.image =
+        req.protocol + "://" + req.headers.host + "/" + req.file.path;
+    }
+
+    if (formData.password) {
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(formData.password, salt);
+    }
+
+    const updatedUser = await user.save();
+    let resUser = updatedUser.toJSON();
+    delete resUser.password;
+    res.status(200).json({ message: "User updated", data: resUser });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+
+
+
 module.exports = {
   register,
   login,
+  getUser,
+  updateUser,
 };

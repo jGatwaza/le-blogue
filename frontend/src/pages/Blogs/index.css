@@ -4,11 +4,11 @@
 }
 
 .link {
+  background-color: white;
   border: none;
   display: inline-block;
   color: white;
   text-align: center;
-  text-decoration: none;
   padding: 14px;
   font-size: larger;
 }

@@ -122,7 +122,7 @@ export default function RegisterPage() {
               Login
             </Link>
             <p className="mt-5 mb-3 text-muted text-center">
-              The Blog App &copy; 2024
+              Le Blogue &copy; 2024
             </p>
           </form>
         </main>

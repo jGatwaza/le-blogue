@@ -1,3 +1,6 @@
+.body{
+  transition: 0.5s;
+}
 .App {
     text-align: center;
   }
@@ -32,8 +35,61 @@
     color: #61dafb;
   }
 
-  
-  
+/* global.css */
+body.dark-mode {
+  background-color: #121212 !important;
+  color: white !important;
+  transition: 1s;
+}
+a.dark-mode{
+  color: white !important;
+}
+.link{
+   background: none !important;
+  color: blueviolet !important;
+  text-decoration: none;
+}
+button.card{
+  background-color: none !important;
+}
+.card-transparent{
+  background-color: rgba(203, 15, 15, 0) !important;
+}
+.bi-person-circle{
+  color: #646f83 !important;
+}
+.linkSelected{
+  background: none !important;
+  color: #424956 !important;
+  font-size: large !important;
+  text-decoration: none;
+}
+.date-author-text {
+  color: blueviolet !important;
+}
+.btn-light{
+  background-color: blueviolet !important;
+  color: white !important;
+  border: none !important;
+}
+button.darkmode{
+  background-color: #121212 !important;
+  color: white !important;
+  transition: 1s;
+}
+body.dark-mode .navbar .modal-body{
+  background-color: #121212 !important;
+  transition: 0.5s;
+}
+
+body.dark-mode .navbar .nav-link {
+  color: white !important;
+}
+
+body.dark-mode .navbar-brand {
+  color: white !important;
+}
+
   .nav-item {
     flex-shrink: 0; 
     cursor: pointer;

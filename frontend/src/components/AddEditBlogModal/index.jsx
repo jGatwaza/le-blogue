@@ -1,20 +1,26 @@
 import React, { useEffect, useMemo, useState } from "react";
-
 import PropTypes from "prop-types";
-
 import { Modal } from "bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 
 import Categories from "../Categories";
-
-export default function AddEditBlogModal({
-  addBlog,
-  editBlog,
-  categories,
+import FormImage from "../FormImage";
+import {
   createBlog,
   updateBlog,
-  onClose,
-}) {
+  setAddBlog,
+  setEditBlog,
+} from "../../features/blogsSlice";
+
+export default function AddEditBlogModal() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const dispatch = useDispatch();
+
+  const { addBlog, editBlog } = useSelector((state) => state.blogs);
+  const { categories } = useSelector((state) => state.categories);
+
   const [blog, setBlog] = useState();
+  const [blogImage, setBlogImage] = useState("");
 
   const modalEl = document.getElementById("addEditModal");
 
@@ -29,31 +35,44 @@ export default function AddEditBlogModal({
     } else if (editBlog) {
       setBlog(editBlog);
       addEditModal.show();
-    } else {
-      // Ensure resetting the blog properly includes resetting categories as intended
-      setBlog({
-        title: "",
-        description: "",
-        categories: [],  // Ensure this is correctly set up for a new blog
-        content: [],
-        authorId: ""
-      });
     }
   }, [addBlog, editBlog, addEditModal]);
-  
+
+  const buildFormData = () => {
+    const formData = new FormData();
+    formData.append("id", blog.id);
+    formData.append("image", blog.image);
+    formData.append("title", blog.title);
+    formData.append("description", blog.description);
+    formData.append("categories", JSON.stringify(blog.categories));
+    formData.append("content", JSON.stringify(blog.content));
+    formData.append("authorId", user?._id);
+    return formData;
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (isFormValid()) {
+      const blogForm = buildFormData();
       if (addBlog) {
-        createBlog(blog);
+        dispatch(createBlog(blogForm));
       } else if (editBlog) {
-        updateBlog(blog);
+        dispatch(updateBlog(blogForm));
       }
       resetBlog();
       addEditModal?.hide();
     }
   };
-  
+
+  const onImageChange = (e) => {
+    e.preventDefault();
+    if (e?.target?.files?.length) {
+      const file = e.target.files[0];
+      setBlogImage(URL.createObjectURL(file));
+      setBlog({ ...blog, image: file });
+    }
+  };
+
   const resetBlog = () => {
     setBlog({
       title: "",
@@ -73,7 +92,11 @@ export default function AddEditBlogModal({
   const onCloseModal = () => {
     resetBlog();
     addEditModal?.hide();
-    onClose();
+    if (editBlog) {
+      dispatch(setEditBlog(null));
+    } else if (addBlog) {
+      dispatch(setAddBlog(null));
+    }
   };
 
   if (!categories && !categories?.length) {
@@ -85,7 +108,7 @@ export default function AddEditBlogModal({
       <div
         className="modal fade"
         id="addEditModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="addEditModalLabel"
         aria-hidden="true"
       >
@@ -103,7 +126,12 @@ export default function AddEditBlogModal({
               ></button>
             </div>
             <div className="modal-body">
-              <form id="blogForm">
+              <form
+                id="blogForm"
+                onSubmit={onSubmit}
+                enctype="multipart/form-data"
+              >
+                <FormImage image={blogImage} onChange={onImageChange} />
                 <div className="input-group mb-3">
                   <label
                     className="input-group-text"
@@ -115,20 +143,21 @@ export default function AddEditBlogModal({
                     className="form-select"
                     id="categoryInputSelect"
                     onChange={(e) => {
-                      const category = categories?.find(x => x.id === e.target.value);
+                      const category = categories?.find(
+                        (x) => x.id === e.target.value
+                      );
                       if (!category) {
                         return;
                       }
-                      if (blog?.categories?.find(x => x.id === category.id)) {
-                        return; // Avoid adding the same category again
+                      if (blog?.categories?.find((x) => x.id === category.id)) {
+                        return;
                       }
                       const blogUpdate = {
                         ...blog,
-                        categories: [...blog.categories, category]
+                        categories: [...blog.categories, category],
                       };
                       setBlog(blogUpdate);
                     }}
-                    
                     required={editBlog ? false : true}
                   >
                     {categories?.map((category, index) => {
@@ -309,11 +338,7 @@ export default function AddEditBlogModal({
               >
                 Close
               </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={onSubmit}
-              >
+              <button type="submit" className="btn btn-primary" form="blogForm">
                 Save changes
               </button>
             </div>
@@ -325,10 +350,5 @@ export default function AddEditBlogModal({
 }
 
 AddEditBlogModal.prototype = {
-  addBlog: PropTypes.object,
-  editBlog: PropTypes.object,
-  categories: PropTypes.array,
-  createBlog: PropTypes.func,
-  updateBlog: PropTypes.func,
   onClose: PropTypes.func,
 };

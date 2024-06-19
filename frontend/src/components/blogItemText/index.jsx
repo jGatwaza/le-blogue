@@ -5,9 +5,6 @@ import Categories from "../Categories";
 import "./index.css";
 
 export default function BlogItemText({ blogPost, headerFontSize }) {
-  console.log("blogPost", blogPost);
-  console.log("createdAt", blogPost.createdAt);
-  console.log("description", blogPost.description);
   return (
     <div>
       <div style={{ display: "flex" }}>

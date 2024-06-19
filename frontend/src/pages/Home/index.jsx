@@ -53,6 +53,10 @@ export default function Home() {
     fetchData();
   }, []);
 
+  if (isLoadingBlogs || isLoadingCategories) {
+    return <Loading />;
+  }
+
   return (
     <>
       <Navbar />

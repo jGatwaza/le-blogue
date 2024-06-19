@@ -23,5 +23,5 @@ app.use("/api/auth", authRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 app.listen(port, () => {
-  console.log(`Le Blogue app listening on port ${port}`);
+  console.log(`Le blogue server listening on port ${port}`);
 });

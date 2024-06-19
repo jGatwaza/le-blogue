@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 import "./index.css";
 
@@ -7,6 +8,7 @@ import EditButtons from "../EditButtons";
 
 export default function CategoriesList({ categories, onEdit, onDelete }) {
   const user = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
 
   if (!categories && !categories?.length) {
     return null;
@@ -19,13 +21,15 @@ export default function CategoriesList({ categories, onEdit, onDelete }) {
           <button
             key={category.id}
             className="card"
-            style={{ borderRadius: "0px", border: "none" }}
+            style={{ borderRadius: "0px", border: "none", padding: 0 }}
             onClick={() => {
-              console.log("TODO: Navigate to categories page");
+              if ((!user && !user?.token) || (!onEdit && !onDelete)) {
+                navigate(`/blogs/${category.id}`);
+              }
             }}
           >
             <div
-              className="card-body w-100"
+              className="card-body  w-100"
               style={{
                 backgroundColor: category.color + "33",
                 position: "relative",
@@ -34,7 +38,7 @@ export default function CategoriesList({ categories, onEdit, onDelete }) {
             >
               <h5 className="card-title">{category.title}</h5>
             </div>
-            <div className="card-body">
+            <div className="card-body card-transparent">
               <p className="card-text">
                 {category.description.substring(1, 100)} ...
               </p>
@@ -47,6 +51,9 @@ export default function CategoriesList({ categories, onEdit, onDelete }) {
                 onDelete={() => {
                   onDelete(category);
                 }}
+                onNavigate={() => {
+                  navigate(`/blogs/${category.id}`);
+                }}
               />
             )}
           </button>
@@ -58,4 +65,6 @@ export default function CategoriesList({ categories, onEdit, onDelete }) {
 
 CategoriesList.prototype = {
   categories: PropTypes.array.isRequired,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
 };
