@@ -92,9 +92,9 @@ export default function BlogPage() {
           <div className="author col-md-4" onClick={navigateToAuthorProfile}>
             <div className="position-sticky my-5" style={{ top: "2rem" }}>
               <div className="p-4 mb-3 bg-light rounded">
-                <h4 className="fst-italic">About the author</h4>
+                <h4 className="text-center">About the author</h4>
                 <img src={blog.author.image} className="avatar" alt="..." />
-                <p>{blog.author.bio.substring(0, 100)}...</p>
+                <p className="text-center">{blog.author.bio.substring(0, 100)}...</p>
               </div>
             </div>
           </div>

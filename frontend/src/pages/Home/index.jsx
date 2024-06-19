@@ -64,6 +64,7 @@ export default function Home() {
       <div className="container">
         <SubHeading subHeading={"Recent blog posts"} />
         <BlogGrid blogPosts={blogs} />
+        <SubHeading subHeading={"Le Blogue categories"} />
         <CategoriesList categories={categories} />
         <Footer />
       </div>

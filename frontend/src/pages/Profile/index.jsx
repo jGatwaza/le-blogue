@@ -26,6 +26,8 @@ export default function ProfilePage() {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editUser, setEditUser] = useState(null);
 
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
     const fetchAuthorBlogs = async () => {
       try {
@@ -69,17 +71,19 @@ export default function ProfilePage() {
       <div className="col-md-8 col-lg-6 col-xl-4 mx-auto profilehero">
         <div className="position-sticky my-5" style={{ top: "2rem" }}>
           <div className="p-4 mb-3 bg-light rounded">
-            <h4 className="fst-italic text-center">
+            <h4 className="text-center">
               {author.firstName} {author.lastName}
             </h4>
             <img src={author.image} className="avatar" alt="..." />
             <p className="text-center">{author.bio.substring(0, 1000)}...</p>
-            <button
-              className="btn btn-light mt-1 avatarbtn"
-              onClick={() => openEditModal(author)}
-            >
-              Edit Profile
-            </button>
+            {currentUser && currentUser._id === author._id && (
+              <button
+                className="btn btn-light mt-1 avatarbtn"
+                onClick={() => openEditModal(author)}
+              >
+                Edit Profile
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -13,3 +13,8 @@
   padding: 15px;
   margin: auto;
 }
+.link {
+  color: blueviolet;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+}

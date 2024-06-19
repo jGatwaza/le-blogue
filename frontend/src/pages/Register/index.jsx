@@ -54,7 +54,7 @@ export default function RegisterPage() {
       <div className="html-body">
         <main className="form-signin">
           <form onSubmit={onSubmit}>
-            <h1 className="h3 mb-3 fw-normal">Author registration</h1>
+            <h1 className="h3 mb-4 fw-normal">Become a Blogue Author</h1>
             <div className="form-floating">
               <input
                 type="text"
@@ -118,8 +118,8 @@ export default function RegisterPage() {
             <button className="w-100 btn btn-lg btn-primary" type="submit">
               Register
             </button>
-            <Link to="/login" className="my-5">
-              Login
+            <Link to="/login" className="link">
+              Login Instead
             </Link>
             <p className="mt-5 mb-3 text-muted text-center">
               Le Blogue &copy; 2024

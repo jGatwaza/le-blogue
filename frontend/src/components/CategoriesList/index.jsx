@@ -40,7 +40,7 @@ export default function CategoriesList({ categories, onEdit, onDelete }) {
             </div>
             <div className="card-body card-transparent">
               <p className="card-text">
-                {category.description.substring(1, 100)} ...
+                {category.description.substring(0, 100)} ...
               </p>
             </div>
             {user && user?.token && onEdit && onDelete && (

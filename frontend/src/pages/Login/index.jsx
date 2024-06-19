@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -34,13 +34,14 @@ export default function LoginPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      dispatch(login(formData));
-      navigate("/home");
-    } catch (err) {
-      console.log(err);
-    }
+    dispatch(login(formData));
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/home");
+    }
+  }, [isSuccess, navigate]);
 
   if (isLoading) {
     return <Loading />;
@@ -51,7 +52,7 @@ export default function LoginPage() {
       <div className="html-body">
         <main className="form-signin">
           <form onSubmit={onSubmit}>
-            <h1 className="h3 mb-3 fw-normal">Please login</h1>
+            <h1 className="h3 mb-3 fw-normal">Sign In </h1>
             <div className="form-floating">
               <input
                 type="email"
@@ -80,12 +81,14 @@ export default function LoginPage() {
               Sign in
             </button>
 
-            <Link to="/register" className="my-5">
-              Register
-            </Link>
-            <Link to="/home" className="m-5">
-              Browse as a Guest
-            </Link>
+            <div className="links-container">
+              <Link to="/register" className="link">
+                Register
+              </Link>
+              <Link to="/home" className="link">
+                Dive in as a Guest
+              </Link>
+            </div>
             <p className="mt-5 mb-3 text-muted text-center">
               Le Blogue &copy; 2024
             </p>

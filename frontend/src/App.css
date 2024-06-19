@@ -1,6 +1,3 @@
-.body{
-  transition: 0.5s;
-}
 .App {
     text-align: center;
   }
@@ -30,7 +27,12 @@
     font-size: calc(10px + 2vmin);
     color: white;
   }
-  
+  .card-text-right{
+    margin-left: 1vw;
+  }
+  .card-text-bottom{
+    max-height: 5vh !important;
+  }
   .App-link {
     color: #61dafb;
   }
@@ -40,27 +42,29 @@ body.dark-mode {
   background-color: #121212 !important;
   color: white !important;
   transition: 1s;
+  .card-transparent {
+    background-color: #121212 !important;
+    color: white !important;
+    transition: 1s;
+  }
 }
 a.dark-mode{
   color: white !important;
 }
 .link{
-   background: none !important;
+  background: none !important;
   color: blueviolet !important;
   text-decoration: none;
 }
-button.card{
-  background-color: none !important;
-}
-.card-transparent{
-  background-color: rgba(203, 15, 15, 0) !important;
+.card-transparent.dark-mode {
+  background-color: rgb(253, 0, 0) !important;
 }
 .bi-person-circle{
-  color: #646f83 !important;
+  color: #676f7d !important;
 }
 .linkSelected{
   background: none !important;
-  color: #424956 !important;
+  color: #606060 !important;
   font-size: large !important;
   text-decoration: none;
 }
