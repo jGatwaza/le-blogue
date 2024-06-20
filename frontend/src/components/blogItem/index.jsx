@@ -39,7 +39,7 @@ export default function BlogItem({
         <img src={blog.image} className="card-img-top" alt="..." />
         <div className="card-text-bottom">
           <BlogItemText blogPost={blog} headerFontSize="20px" />
-          {user && user.token && onBlogEdit && onBlogDelete ? (
+          {user && user.token  && user.email === blog.author.email && onBlogEdit && onBlogDelete ? (
             <EditButtonsContainer />
           ) : null}
         </div>
