@@ -20,7 +20,7 @@ const createBlogs = async (req, res) => {
       authorId: req.body.authorId,
       categoryIds: categoryIds,
     });
-
+    // Save blog to database
     const newBlog = await blog.save();
 
     const blogRes = await Blog.findById(newBlog._id)
