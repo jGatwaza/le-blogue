@@ -1,16 +1,22 @@
+const { uploadToFirebaseStorage } = require("../services/google-cloud");
 const Blog = require("../models/Blog");
 
 const createBlogs = async (req, res) => {
   try {
-    console.log("BODY:", req.body);
+    let imageURL = "";
+    if (req?.file?.path) {
+      imageURL = await uploadToFirebaseStorage(
+        req?.file?.path,
+        req?.file?.path
+      );
+    }
+    console.log(req.body);
     const categoryIds = JSON.parse(req?.body?.categories).map((x) => x.id);
     const blog = new Blog({
       title: req.body.title,
       description: req.body.description,
-      image: req?.file?.path
-        ? req?.protocol + "://" + req?.headers?.host + "/" + req.file.path
-        : "",
-      content: JSON.parse(req.body.content),
+      image: imageURL,
+      content: JSON.parse(req?.body?.content),
       authorId: req.body.authorId,
       categoryIds: categoryIds,
     });
@@ -27,8 +33,8 @@ const createBlogs = async (req, res) => {
       message: "Blog created!",
       data: blogRes,
     });
-  } catch (error) {
-    res.status(500).json({ message: error.message, data: {} });
+  } catch (err) {
+    res.status(500).json({ message: err.message, data: {} });
   }
 };
 
@@ -107,8 +113,15 @@ const getBlogsByAuthorID = async (req, res) => {
 };
 
 const updateBlogByID = async (req, res) => {
-  console.log("BODY:", req.body);
   try {
+    let imageURL = "";
+    if (req?.file?.path) {
+      imageURL = await uploadToFirebaseStorage(
+        req?.file?.path,
+        req?.file?.path
+      );
+    }
+    console.log(req.body);
     const blog = await Blog.findById(req.params.id)
       .populate({
         path: "categoryIds",
@@ -116,12 +129,10 @@ const updateBlogByID = async (req, res) => {
       .populate({ path: "authorId" });
     if (blog) {
       const categoryIds = JSON.parse(req?.body?.categories).map((x) => x.id);
+      blog.image = imageURL ? imageURL : blog.image;
       blog.authorId = req?.body?.authorId || blog.authorId;
       blog.categoryIds = categoryIds ? categoryIds : blog.categoryIds;
-      (blog.image = req?.file?.path
-        ? req?.protocol + "://" + req?.headers?.host + "/" + req.file.path
-        : blog.image),
-        (blog.title = req?.body?.title || blog.title);
+      blog.title = req?.body?.title || blog.title;
       blog.description = req?.body?.description || blog.description;
       blog.content = req.body.content
         ? JSON.parse(req.body.content)
