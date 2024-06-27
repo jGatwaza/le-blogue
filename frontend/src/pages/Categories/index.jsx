@@ -107,7 +107,7 @@ export default function CategoriesPage() {
     if (!user || !user.token) return null;
     return (
       <button className="btn btn-light m-3" onClick={onCategoryAdd}>
-        ADD CATEGORY
+        Add Category
       </button>
     );
   };
