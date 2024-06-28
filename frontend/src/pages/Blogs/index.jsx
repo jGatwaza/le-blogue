@@ -54,14 +54,14 @@ export default function BlogsPage() {
       setAddBlog({
         title: "",
         description:
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, minima necessitatibus deleniti consectetur esse est harum recusandae doloribus odio itaque veritatis assumenda rerum nisi unde totam, perferendis vel id libero nulla! Quia mollitia nostrum quibusdam doloremque nemo nihil, expedita illo ullam aspernatur sed eum unde molestiae incidunt error aperiam, ab excepturi facilis officia animi? Vel magnam aliquam quisquam dolore enim suscipit voluptate ipsum, voluptas at quidem ab, labore nobis reprehenderit, cumque libero cupiditate optio sint quod amet reiciendis quasi alias.",
         categories: [],
         authorId: user._id,
         content: [
           {
             sectionHeader: "Introduction",
             sectionText:
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, minima necessitatibus deleniti consectetur esse est harum recusandae doloribus odio itaque veritatis assumenda rerum nisi unde totam, perferendis vel id libero nulla! Quia mollitia nostrum quibusdam doloremque nemo nihil, expedita illo ullam aspernatur sed eum unde molestiae incidunt error aperiam, ab excepturi facilis officia animi? Vel magnam aliquam quisquam dolore enim suscipit voluptate ipsum, voluptas at quidem ab, labore nobis reprehenderit, cumque libero cupiditate optio sint quod amet reiciendis quasi alias.",
           },
         ],
       })
