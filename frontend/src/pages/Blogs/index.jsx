@@ -113,8 +113,8 @@ export default function BlogsPage() {
   return (
     <>
       <Navbar />
+      <Heading />
       <div className="container">
-        <Heading />
         <div className="scroll-menu">
           <CategoriesList categoryId={categoryId} />
         </div>

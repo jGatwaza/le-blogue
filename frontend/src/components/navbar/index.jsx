@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "bootstrap-icons/font/bootstrap-icons.css"; // Import Bootstrap Icons
+import "bootstrap-icons/font/bootstrap-icons.css"; // import Bootstrap Icons
 
 export default function Navbar() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -20,7 +20,7 @@ export default function Navbar() {
     >
       <div style={{ margin: "0px 5%" }} className="container-fluid">
         <Link className="navbar-brand" to="/home">
-          Le Blogue SWEing Blog
+          Le blogue for carrers in Tech
         </Link>
         <button
           className="navbar-toggler"

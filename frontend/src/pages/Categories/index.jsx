@@ -119,8 +119,8 @@ export default function CategoriesPage() {
   return (
     <>
       <Navbar />
+      <Heading />
       <div className="container">
-        <Heading />
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <p className="page-subtitle">Categories</p>
           <AddButton />

@@ -86,7 +86,7 @@ export default function LoginPage() {
                 Register
               </Link>
               <Link to="/home" className="link">
-                Dive in as a Guest
+                Dive in as a Reader
               </Link>
             </div>
             <p className="mt-5 mb-3 text-muted text-center">
