@@ -25,7 +25,7 @@ export default function BlogList({ blogs }) {
 
   return (
     <div className="blog-list">
-      {blogs.map((blog, index) => {
+      {blogs.slice().reverse().map((blog, index) => {
         return (
           <BlogItem
             key={index}
