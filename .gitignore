@@ -11,3 +11,4 @@ frontend/dist/
 # Ignore any built files for the backend
 backend/build/
 backend/dist/
+node_modules
