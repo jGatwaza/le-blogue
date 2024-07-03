@@ -9,6 +9,10 @@
     "client": "cd frontend && npm start",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
+    "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
   "dependencies": {
     "concurrently": "^6.5.1"
   },
