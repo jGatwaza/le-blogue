@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Navbar from "../../components/Navbar";
+// import Navbar from "../../components/Navbar";
 import Heading from "../../components/Heading";
 import SubHeading from "../../components/Subheading";
 import BlogGrid from "../../components/BlogGrid";
@@ -59,7 +59,7 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Heading />
       <div className="container">
         <SubHeading subHeading={"Recent blog posts"} />
