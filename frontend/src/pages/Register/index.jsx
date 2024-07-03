@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -37,13 +37,14 @@ export default function RegisterPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      dispatch(register(formData));
-      navigate("/home");
-    } catch (err) {
-      console.log(err);
-    }
+    dispatch(register(formData));
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/home");
+    }
+  }, [isSuccess, navigate]);
 
   if (isLoading) {
     return <Loading />;
