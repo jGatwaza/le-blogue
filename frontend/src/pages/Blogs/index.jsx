@@ -74,7 +74,7 @@ export default function BlogsPage() {
     }
     return (
       <button className="btn btn-light m-3" onClick={onBlogAdd}>
-        + BLOG
+        Add a Blogue
       </button>
     );
   };

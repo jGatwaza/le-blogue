@@ -1,114 +1,146 @@
-.App {
-    text-align: center;
-  }
-  
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-  .page-title{
-    font-family: 'Tajamuka Script', sans-serif;
-                                                  
-                                                  
-  }
-  .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-  .card-text-right{
-    margin-left: 1vw;
-  }
-  .card-text-bottom{
-    max-height: 5vh !important;
-  }
-  .App-link {
-    color: #61dafb;
-  }
+body {
+  transition: background-color 1s, color 1s;
+}
 
-/* global.css */
 body.dark-mode {
   background-color: #121212 !important;
   color: white !important;
-  transition: 1s;
-  .card-transparent {
-    background-color: #121212 !important;
-    color: white !important;
-    transition: 1s;
-  }
 }
-a.dark-mode{
+
+.card-transparent {
+  transition: background-color 1s, color 1s;
+}
+
+.card-transparent.dark-mode {
+  background-color: #121212 !important;
   color: white !important;
 }
-.link{
+
+a {
+  transition: color 1s;
+}
+
+a.dark-mode {
+  color: white !important;
+}
+
+button {
+  transition: background-color 1s, color 1s;
+}
+
+button.darkmode {
+  background-color: #121212 !important;
+  color: white !important;
+}
+
+body.dark-mode .navbar .modal-body {
+  background-color: #121212 !important;
+}
+
+body.dark-mode .navbar .nav-link {
+  color: white !important;
+  transition: color 1s;
+}
+
+body.dark-mode .navbar-brand {
+  color: white !important;
+  transition: color 1s;
+}
+
+/* Other styles */
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.page-title {
+  font-family: 'Tajamuka Script', sans-serif;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.card-text-right {
+  margin-left: 1vw;
+}
+
+.card-text-bottom {
+  max-height: 5vh !important;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.link {
   background: none !important;
   color: blueviolet !important;
   text-decoration: none;
 }
+
+.card-transparent {
+  background-color: #ffffff;
+  color: #000000;
+}
+
 .card-transparent.dark-mode {
   background-color: rgb(253, 0, 0) !important;
 }
-.bi-person-circle{
+
+.bi-person-circle {
   color: #676f7d !important;
 }
-.linkSelected{
+
+.linkSelected {
   background: none !important;
   color: #606060 !important;
   font-size: large !important;
   text-decoration: none;
 }
+
 .date-author-text {
   color: blueviolet !important;
 }
-.btn-light{
+
+.btn-light {
   background-color: blueviolet !important;
   color: white !important;
   border: none !important;
 }
-button.darkmode{
-  background-color: #121212 !important;
-  color: white !important;
-  transition: 1s;
-}
-body.dark-mode .navbar .modal-body{
-  background-color: #121212 !important;
-  transition: 0.5s;
+
+.nav-item {
+  flex-shrink: 0;
+  cursor: pointer;
 }
 
-body.dark-mode .navbar .nav-link {
-  color: white !important;
+.spinner-border-xlg {
+  width: 100px !important;
+  height: 100px !important;
 }
 
-body.dark-mode .navbar-brand {
-  color: white !important;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-
-  .nav-item {
-    flex-shrink: 0; 
-    cursor: pointer;
-  }
-  
-  .spinner-border-xlg{
-    width: 100px !important;
-    height: 100px !important;
-  }
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
