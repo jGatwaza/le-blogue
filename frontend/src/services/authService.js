@@ -1,5 +1,6 @@
+const API_URL = process.env.REACT_APP_API_URL;
 const register = async (userData) => {
-  const response = await fetch("http://localhost:8000/api/auth/register", {
+  const response = await fetch(`${API_URL}/api/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -24,7 +25,7 @@ const register = async (userData) => {
 };
 
 const login = async (userData) => {
-  const response = await fetch("http://localhost:8000/api/auth/login", {
+  const response = await fetch(`${API_URL}/api/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -50,7 +51,7 @@ const login = async (userData) => {
 
 const getUser = async (authorId) => {
   const response = await fetch(
-    `http://localhost:8000/api/auth/user/${authorId}`
+    `${API_URL}/api/auth/user/${authorId}`
   );
 
   if (!response.ok) {
@@ -64,7 +65,7 @@ const getUser = async (authorId) => {
 
 const updateUser = async (userId, userData) => {
   const response = await fetch(
-    `http://localhost:8000/api/auth/user/${userId}`,
+    `${API_URL}/api/auth/user/${userId}`,
     {
       method: "PUT",
       headers: {

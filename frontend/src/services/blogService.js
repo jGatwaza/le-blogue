@@ -1,5 +1,6 @@
+const API_URL = process.env.REACT_APP_API_URL;
 const createBlog = async (blog) => {
-  const response = await fetch("http://localhost:8000/api/blogs", {
+  const response = await fetch(`${API_URL}/api/blogs`, {
     method: "POST",
     headers: {
       // "Content-Type": "application/json",
@@ -24,7 +25,7 @@ const createBlog = async (blog) => {
 };
 
 const fetchBlogs = async () => {
-  const response = await fetch("http://localhost:8000/api/blogs", {
+  const response = await fetch(`${API_URL}/api/blogs`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -47,7 +48,7 @@ const fetchBlogs = async () => {
 };
 
 const fetchBlogByID = async (id) => {
-  const response = await fetch("http://localhost:8000/api/blogs/" + id, {
+  const response = await fetch(`${API_URL}/api/blogs/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -70,7 +71,7 @@ const fetchBlogByID = async (id) => {
 
 const fetchBlogsByCategoryId = async (categoryId) => {
   const response = await fetch(
-    "http://localhost:8000/api/blogs/categories/" + categoryId,
+    `${API_URL}/api/blogs/categories/${categoryId}`,
     {
       method: "GET",
       headers: {
@@ -95,7 +96,7 @@ const fetchBlogsByCategoryId = async (categoryId) => {
 
 const fetchBlogsByAuthorId = async (authorId) => {
   const response = await fetch(
-    "http://localhost:8000/api/blogs/author/" + authorId,
+    `${API_URL}/api/blogs/author/${authorId}`,
     {
       method: "GET",
       headers: {
@@ -120,7 +121,7 @@ const fetchBlogsByAuthorId = async (authorId) => {
 
 const updateBlog = async (blog) => {
   const response = await fetch(
-    "http://localhost:8000/api/blogs/" + blog.get("id"),
+    `${API_URL}/api/blogs/` + blog.get("id"),
     {
       method: "PUT",
       headers: {
@@ -147,7 +148,7 @@ const updateBlog = async (blog) => {
 };
 
 const deleteBlog = async (id) => {
-  const response = await fetch("http://localhost:8000/api/blogs/" + id, {
+  const response = await fetch(`${API_URL}/api/blogs/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
