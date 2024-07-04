@@ -1,4 +1,5 @@
 const API_URL = process.env.REACT_APP_API_URL;
+console.log("API_URL:", API_URL);
 const createBlog = async (blog) => {
   const response = await fetch(`${API_URL}/api/blogs`, {
     method: "POST",
@@ -95,15 +96,12 @@ const fetchBlogsByCategoryId = async (categoryId) => {
 };
 
 const fetchBlogsByAuthorId = async (authorId) => {
-  const response = await fetch(
-    `${API_URL}/api/blogs/author/${authorId}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const response = await fetch(`${API_URL}/api/blogs/author/${authorId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
   if (!response.ok) {
     try {
       let res = await response.json();
@@ -120,18 +118,14 @@ const fetchBlogsByAuthorId = async (authorId) => {
 };
 
 const updateBlog = async (blog) => {
-  const response = await fetch(
-    `${API_URL}/api/blogs/` + blog.get("id"),
-    {
-      method: "PUT",
-      headers: {
-        // "Content-Type": "application/json",
-        Authorization:
-          "Bearer " + JSON.parse(localStorage.getItem("user")).token,
-      },
-      body: blog,
-    }
-  );
+  const response = await fetch(`${API_URL}/api/blogs/` + blog.get("id"), {
+    method: "PUT",
+    headers: {
+      // "Content-Type": "application/json",
+      Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
+    },
+    body: blog,
+  });
   if (!response.ok) {
     try {
       let res = await response.json();
