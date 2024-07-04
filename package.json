@@ -1,0 +1,21 @@
+{
+  "name": "le-blogue",
+  "version": "1.0.0",
+  "description": "Web blog app for careers in tech",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "heroku-postbuild": "cd frontend && npm install && npm run build && cd .. && npm install --prefix"
+  },
+  "engines": {
+    "node": "20.12.2",
+    "npm": "10.8.1"
+  },
+  "dependencies": {
+    "concurrently": "^6.5.1"
+  },
+  "author": "Jean Yves Gatwaza",
+  "license": "ISC"
+}

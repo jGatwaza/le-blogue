@@ -1,0 +1,23 @@
+.page-title {
+  text-align: center;
+  font-size: calc(100px + 2vw);
+  font-weight: bold;
+  border-top: 1px solid #9fa2a7;
+  border-bottom: 1px solid #9fa2a7;
+  margin: 16px 0px;
+  overflow: hidden;
+}
+
+.page-title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: fadeInUp 0.25s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
