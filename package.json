@@ -4,8 +4,7 @@
   "description": "Web blog app for careers in tech",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd backend && npm run dev",
+    "start": "npm run client",
     "client": "cd frontend && npm start",
     "heroku-postbuild": "cd frontend && npm install && npm run build && cd .. && npm install --prefix"
   },
