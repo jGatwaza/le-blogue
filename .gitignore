@@ -12,3 +12,5 @@ frontend/dist/
 backend/build/
 backend/dist/
 node_modules
+#ignore the backend folder as it is not needed in the frontend
+backend/
